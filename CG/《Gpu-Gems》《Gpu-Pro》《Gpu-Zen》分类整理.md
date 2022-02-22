@@ -2,7 +2,7 @@
 
 以下是各项技术的分类整理，除Multi Topic可能包含若干章节是很多技术整合分享的，其余绝大部分章节都是单向技术的总结。
 
-#### Multi Topic
+## Multi Topic
 
 《Gpu Pro1》Rendering Techniques in Call of Juarez: Bound in Blood：Deferred Shading，后处理流程，SSAO，Depth Fog，RainEffect。
 
@@ -12,9 +12,7 @@
 
 《Gpu Pro6》Next-Generation Rendering in Thief：Cube Map，SSR，IBR等多项技术结合的反射系统构建；Contact-Hardening Shadows区域光源软阴影；支持光照的粒子效果；基于Compute Shader的Postprocessing。
 
- 
-
-#### Rendering
+## Rendering
 
 《Gpu Gems1》Deferred Shading in S.T.A.L.K.E.R.：打开了延迟渲染世界的大门，利用DX9 MRT特性将着色和对象数量分离，并给出了后处理AA，多材质处理等。
 
@@ -28,7 +26,7 @@
 
 《Gpu Pro4》Forward+: A Step Toward Film-Style Shading in Real Time：AMD的技术Demo，实现Forward+ Shading，Depth Prepass，Light Culling，Final Shading。通过DX11 Compute Shader实现分Tile的light Culling。将Forward+和基于Compute Shader的Tiled Deferred Shading对比。最后扩展One Bonce GI，2.5D Culling，超大量光源阴影计算等。
 
-《Gpu Pro5》[Mobile] Deferred Rendering Techniques on Mobile Devices：Deferred Shading：GLES3.0(带扩展的GLES2.0)，深度float pack到RGBA，重建世界坐标。Pre-Pass Lighting（Deferred Lighting）：存储光照信息而非GBuffer，降低带宽与内存。Light Indexed Rendering：存储光Id与影响像素的映射，相比于前两种，可以使用硬件AA。
+《Gpu Pro5》\[Mobile] Deferred Rendering Techniques on Mobile Devices：Deferred Shading：GLES3.0(带扩展的GLES2.0)，深度float pack到RGBA，重建世界坐标。Pre-Pass Lighting（Deferred Lighting）：存储光照信息而非GBuffer，降低带宽与内存。Light Indexed Rendering：存储光Id与影响像素的映射，相比于前两种，可以使用硬件AA。
 
 《Gpu Pro6》Real-Time Lighting via Light Linked List：常规Deferred Lighting需要深度，因而半透一般是通过后续的Forward Lighting实现，文中通过自定义Software Depth Test，影响当前屏幕像素点的Light Link List实现对半透对象的Deferred Lighting效果。
 
@@ -38,13 +36,11 @@
 
 《Gpu Pro7》Deferred Attribute Interpolation Shading：传统GBuffer内存太高，以至于MSAA基本不敢开，文中给出了一种方法，不保存GBuffer信息，而是保存三角形信息，再通过插值进行计算，降低Deferred的内存消耗。还可以把GI等低频光照单独计算降低着色消耗。
 
-《Gpu Pro7》[Mobile] Physically Based Deferred Shading on Mobile：移动平台实现延迟物理渲染，利用Frame Buffer Fetch整合G-Buffer,Lighting，Tonemapping，降低带宽消耗。
+《Gpu Pro7》\[Mobile] Physically Based Deferred Shading on Mobile：移动平台实现延迟物理渲染，利用Frame Buffer Fetch整合G-Buffer,Lighting，Tonemapping，降低带宽消耗。
 
 《Gpu Pro7》Deferred Coarse Pixel Shading：延迟渲染最后全屏着色pixel瓶颈较高，文中给出了一种生成Gbuffer时额外生成ddx，ddy然后通过Compute Shader对NxN大小块计算找到变化不明显区域，使用低频着色，即几个像素计算一次，该方式同样适用于后处理。
 
- 
-
-#### GI
+## GI
 
 《Gpu Gems2》High-Quality Global Illumination Rendering Using Rasterization：通过两遍的方式，使用GPU来对光线和物体求交，得到很好的GI效果，极大加速了离线渲染，但是还不能实时运行。
 
@@ -70,15 +66,11 @@
 
 《Gpu Zen》Stable Indirect Illumination：通过deinterleaved texturing方式（棋盘格）优化Reflective Shadow Map，最终Cross Bilateral Filter，Upsample。单词Bonce GI效果。
 
- 
-
-#### Lightmap
+## Lightmap
 
 《Gpu Pro2》 Level-of-Detail and Streaming Optimized Irradiance Normal Mapping：常规Lightmap只能存储低频GI，但是高频的法线信息表现不出来，文中给出了一种将Lightmap作为输入，通过SH+Normal实现针对方向光的的更好的Lightmap效果。
 
- 
-
-#### AO
+## AO
 
 《Gpu Gems1》Ambient Occlusion：AO正式在实时渲染中应用，基于离线光线追踪预计算，随机生成光线拒绝采样（Rejection Sampling），实时采样AO贴图。主要是计算某一点针对当前位置暴露的比例，仅适用于静态场景。
 
@@ -96,9 +88,7 @@
 
 《Gpu Zen》 Robust Screen Space Ambient Occlusion：在PS4上优化到1080P1ms的SSAO。1/4分辨率，存储camera space depth然后downsample，可以用16位精度。分离Bilateral Filter（虽然这个是不可分离的，但是不太影响结果，性能大大提升），1/4算完后不直接合并，而是upsample以获得更好的效果。
 
- 
-
-#### Shadow
+## Shadow
 
 《Gpu Gems1》Efficient Shadow Volume Rendering：阴影体方式实现阴影，模板阴影技术，效率较低，文中主要处理了一些模板阴影的特殊角度情况，以及优化填充率等。
 
@@ -150,11 +140,9 @@
 
 《Gpu Pro6》Shadow Map Silhouette Revectorization：把MLAA的思想放到Shadow Map中，可以解决低分辨率的ShadowMap使用时出现的锯齿问题，但是目前解决不了投影和抖动造成的Aliasing。通过两个全屏pass解决，第一个pass查找shadowmap中不连续的边界；第二个pass根据不连续的距离以及位置，根据周围内容重建，使之更加平滑。
 
-《Gpu Pro7》[Mobile]Efficient Soft Shadows Based on Static Local Cubemap：Local Cubemap，可以较为精确地模拟贴合包围盒的反射，文中用Local Cube Map实现了烘焙到其中的软阴影效果，不过只支持Static预烘焙。
+《Gpu Pro7》\[Mobile]Efficient Soft Shadows Based on Static Local Cubemap：Local Cubemap，可以较为精确地模拟贴合包围盒的反射，文中用Local Cube Map实现了烘焙到其中的软阴影效果，不过只支持Static预烘焙。
 
- 
-
-#### Lighting
+## Lighting
 
 《Gpu Gems1》Cinematic Lighting：Pixar动画的光照模型，支持各种奇怪形状的光源，以及Cookie，主要是过光本身形成各种效果，不考虑纹理贴图，也不考虑细节，只是整体的光感。
 
@@ -162,23 +150,17 @@
 
 《Gpu Gems2》Approximate Bidirectional Texture Functions：BTF，不考虑BRDF，使用非常简单的BRDF，而是基于摄影采集真是的特殊材质，在不同灯光角度下的值，生成查询贴图，来达到模拟如蜡，布料等特殊材质。新奇的思路.....
 
- 
-
-#### Shape Light
+## Shape Light
 
 《Gpu Pro5》Physically Based Area Lights ： 可以反射显示光形状的区域光源，BRDF，Killzone
 
 《Gpu Zen》 Linear-Light Shading with Linearly Transformed Cosines：桶形或者线形光源的光照效果，精确的GGX BRDF模型，anisotropy matrix。
 
- 
-
-#### PBR
+## PBR
 
 《Gpu Pro6》Physically Based Light Probe Generation on GPU：FIFA15中间接光照的解决方案，通过Specular BRDF+Diffuse BRDF处理Indirect部分的光照，游戏加载时预烘焙场景中的LightProbe，场景CubMap存储不同模糊程度的环境到Mipmap中，优化过的重要性采样，可以根据光的分布进行采样，并保证每区域采样点平均分布。
 
- 
-
-#### IBL
+## IBL
 
 《Gpu Gems1》Image-Based Lighting：之前CubeMap最多就是模拟无限远处的反射效果，而文中通过IBL实现很好的室内金属光照反射效果，模拟近处的反射效果，给Cube定义了一个范围，类似后续的Box Project Cube Map，不过更加复杂。还可以用Cube模拟Difuse效果。
 
@@ -188,15 +170,11 @@
 
 《Gpu Pro1》Environment Mapping with Floyd-Steinberg Halftoning：Halftoning和重要性采样，对比了Random Sampling和Floyd-Steinberg Sampling，后者可以给出更加准确的效果。
 
- 
+## Linear & Gamma
 
-#### Linear & Gamma
+《Gpu Gems3》The Importance of Being Linear：现实情况的显示设备，扫描图像等设备都有非线性的问题，Gamma校正是最容易的处理这个问题的方法，可以使光照计算的结果更加真实，防止失真，尤其是HDR下以及Mipmap纹理失真（(1 + 0 ) / 2 在gamma下并非0.5），不同设备上的差异。输入图片未处理gamma，输出也未处理时，大体会抵消，但是会带来很多难以避免的问题。Gamma校正在最终显示前将显示器的变换取反以抵消显示器的Gamma校正，输入的图片已经经过Gamma校正，我们也需要将其转到线性空间，sRGB。
 
-《Gpu Gems3》The Importance of Being Linear：现实情况的显示设备，扫描图像等设备都有非线性的问题，Gamma校正是最容易的处理这个问题的方法，可以使光照计算的结果更加真实，防止失真，尤其是HDR下以及Mipmap纹理失真（(1 + 0  ) / 2 在gamma下并非0.5），不同设备上的差异。输入图片未处理gamma，输出也未处理时，大体会抵消，但是会带来很多难以避免的问题。Gamma校正在最终显示前将显示器的变换取反以抵消显示器的Gamma校正，输入的图片已经经过Gamma校正，我们也需要将其转到线性空间，sRGB。
-
- 
-
-#### NPR
+## NPR
 
 《Gpu Gems2》Blueprint Rendering and "Sketchy Drawings"：蓝图渲染和草图实现，后半部分介绍了勾边以及风格化渲染的效果。
 
@@ -204,9 +182,7 @@
 
 《Gpu Zen》Mobile Toon Shading：卡通风格渲染，Ramp+Halftone，离线预处理。
 
- 
-
-#### Volumetric Lighting，Fog，Atmospheric Scattering
+## Volumetric Lighting，Fog，Atmospheric Scattering
 
 《Gpu Gems2》Accurate Atmospheric Scattering：精确的大气散射效果，结算大气散射方程（Nishita），Rayleigh Scattering，Mie Scattering，最后增加HDR。
 
@@ -226,9 +202,7 @@
 
 《Gpu Zen》Participating Media Using Extruded Light Volumes：NVIDIA提供的一套体积光解决方案，更加基于物理的体积光大气散射效果，需要Tessellation生成载体Mesh，然后Raymarching。
 
- 
-
-#### ***Volumetirc* Rendering**
+## _**Volumetirc**_** Rendering**
 
 《Gpu Gems1》Volume Rendering Techniques：介绍了用排列观察面上的代理几何体实现基于纹理的体系渲染，并增加了阴影体，半透，随机细节等，优化了体渲染的效果。
 
@@ -246,9 +220,7 @@
 
 《Gpu Pro6》Block-Wise Linear Binary Grids for Fast Ray-Casting Operations：使用二分区块方法，实现更加快速的体素碰撞计算，可以更容易地计算简介光照，VPL等内容。
 
- 
-
-#### Distance Filed & Impostors & Curve
+## Distance Filed & Impostors & Curve
 
 《Gpu Gems3》True Impostors：感觉类似体渲染，或者就是SDF，用光线投射到纹理定义的体积中，模拟各种复杂形状的对象。
 
@@ -258,9 +230,7 @@
 
 《Gpu Pro2》2D Distance Field Generation with the GPU：关注2D Distance Filed，主要是DF的生成，文中给出一种Horizontal-Vertical Erosion的方式实现更好的DF，最后介绍了几种DF的应用，更好的AA效果，OutLine效果，Psychedelic效果。
 
- 
-
-#### Cloud
+## Cloud
 
 《Gpu Pro1》Real-Time Screen Space Cloud Lighting：给出了一种更加物理的云计算方法，基于屏幕空间，首先渲染一张云密度RT，进行Blur，再通过该RT计算Scattering，仅适用于远景云。
 
@@ -268,19 +238,15 @@
 
 《Gpu Pro7》Real-Time Volumetric Cloudscapes：《地平线·黎明时分》的云渲染技术，类似当年他们KZ的体积光，依然是Ray Marching，但是给出了更加复杂的云层光照计算，以及天空不同高度云层表示，可以通过噪声密度控制疏密，乌云等，通过参数可以实现云彩的TOD，资源占用20M，RayMarching20ms，Temporal reprojection优化后2ms。
 
- 
+## Translucent & SSS
 
-#### Translucent & SSS
-
-《Gpu Gems1》Real-Time Approximations to Subsurface Scattering：几种SSS表现，最简单的WrapLighting，通过深度图计算传输距离吸收效果模拟Translucent，原理类似Shadowmap，Texture Space Diffusion  Blur模拟美术经常Blur Diffuse贴图叠加得到柔和的光照效果，最后一种也是Texture Space Skin SSS的做法。
+《Gpu Gems1》Real-Time Approximations to Subsurface Scattering：几种SSS表现，最简单的WrapLighting，通过深度图计算传输距离吸收效果模拟Translucent，原理类似Shadowmap，Texture Space Diffusion Blur模拟美术经常Blur Diffuse贴图叠加得到柔和的光照效果，最后一种也是Texture Space Skin SSS的做法。
 
 《Gpu Gems3》High-Quality Ambient Occlusion：AO的方法，自适应整合计算环境遮挡，但是也可以实现SSS效果。
 
 《Gpu Pro2》Real-Time Approximation of Light Transport in Translucent Homogenous Media：简单模拟光线透射，通过反向烘焙AO实现，也可以实时计算厚度图。
 
- 
-
-#### Skin
+## Skin
 
 《Gpu Gems1》Skin in the "Dawn" Demo：Dawn中的皮肤效果，Cube实现Diffuse，Specular，Environment光照，RimLighting，细节法线贴图表现毛孔等。
 
@@ -290,11 +256,9 @@
 
 《Gpu Pro2》Pre-Integrated Skin Shading：预积分的皮肤效果，NdotL以及斜率分别采样预计算的Ramp图，可以很省地实现SSS效果。
 
-《Gpu Pro5》[Mobile] Realistic Real-Time Skin Rendering on Mobile: 移动平台皮肤渲染，Screen Space Diffusion，N·H，N·V Lut Texture
+《Gpu Pro5》\[Mobile] Realistic Real-Time Skin Rendering on Mobile: 移动平台皮肤渲染，Screen Space Diffusion，N·H，N·V Lut Texture
 
- 
-
-#### Grass & Plant
+## Grass & Plant
 
 《Gpu Gems1》Rendering Countless Blades of Waving Grass：俯视图星形结构的网格渲染，防止由视角变化造成的穿插，禁用背面剔除。根据texcoord控制摇摆权重。
 
@@ -310,19 +274,15 @@
 
 《Gpu Pro6》Grass Rendering and Simulation with LOD：纯GPU草效果，TressFX的后续扩展功能，使用Instance对不同形状的草进行绘制，在Shader中扩展billboard片，Compute Shader进行草半透片的距离排序，支持距离LOD。
 
- 
-
-#### Fur
+## Fur
 
 《Gpu Gems1》Converting Production RenderMan Shaders to Real-Time：将RenderMan离线渲染的毛发移到Shader中，一方面是离线到cg的API实现，如给出了多光源多Pass计算多光源的方式以应对不确定的光源数（Shader不定长数组支持不好），另一方面则是通过Lut，Pixel->Vertex->CPU转移优化等方式进行渲染效率的优化。
 
 《Gpu Pro2》Implementing Fur Using Deferred Shading：正常GBuffer无法实现多pass blend叠加的毛发，文中给了一种Deferred Shading情况下实现毛渲染。
 
-《Gpu Pro6》[Mobile] Animated Characters with Shell Fur for Mobile Devices：当时移动上无法使用Tessellation，所以使用Transform Feedback动画+Instancing的方式，将原本多DC叠加的绘制毛绒的方式优化为Instancing的方式，极大优化了效率。
+《Gpu Pro6》\[Mobile] Animated Characters with Shell Fur for Mobile Devices：当时移动上无法使用Tessellation，所以使用Transform Feedback动画+Instancing的方式，将原本多DC叠加的绘制毛绒的方式优化为Instancing的方式，极大优化了效率。
 
- 
-
-#### Hair
+## Hair
 
 《Gpu Gems2》Hair Animation and Rendering in the Nalu Demo：Nalu中头发效果，鱼鳍的效果，头发物理效果，以及Marschner模型实现光照，头发阴影不透明阴影图。
 
@@ -330,9 +290,7 @@
 
 《Gpu Pro5》 Hair Simulation in TressFX：海飞丝系统，使用DX11 Compute Shader实现对头发的模拟，整体形状，发丝模拟，风影响，碰撞等。
 
- 
-
-#### Transparent
+## Transparent
 
 《Gpu Gems2》Blueprint Rendering and "Sketchy Drawings"：蓝图渲染和草图绘制，前半部分展现了蓝图中透视的边框线通过Depth Peeling实现。
 
@@ -344,11 +302,9 @@
 
 《Gpu Pro 5》Per-Pixel Lists for Single Pass A-Buffer ： ABuffer，GPU 链表，排序
 
-《Gpu Pro 5》[Mobile] Tiled Deferred Blending：Tile Bucketing降低混合操作的带宽，降低时间，不过在Iphoe4S上时间似乎是负优化
+《Gpu Pro 5》\[Mobile] Tiled Deferred Blending：Tile Bucketing降低混合操作的带宽，降低时间，不过在Iphoe4S上时间似乎是负优化
 
- 
-
-#### Reflection
+## Reflection
 
 《Gpu Gems3》Robust Multiple Specular Reflections and Refractions：鲁棒的多镜面反射和折射，可以实现多反射，先将场景渲染为层次化的距离图，每个层存储为一个Cube Map，包含了颜色以及距离，法线。然后通过对这种结构进行光线追踪实现反射和折射效果。
 
@@ -360,15 +316,11 @@
 
 《Gpu Pro6》Next-Generation Rendering in Thief：Cube Map，SSR，IBR结合的反射系统，支持Glossy Reflection，Bump。给出了许多SSR和IBR的优化方案。最终Consonle上5ms。
 
- 
-
-#### Refraction
+## Refraction
 
 《Gpu Gems2》 Generic Refraction Simulation：不渲染两次，而是直接把原始场景渲染到RT上，采样RT进行折射模拟。但是可能有前面的遮挡导致折射物体前的物体也被扰动，所以渲染时生成一个Mask，避免扰动前面的物体。
 
- 
-
-#### Water
+## Water
 
 《Gpu Gems1》Effective Water Simulation from Physical Models：网格模拟集合波动，网格扰动，Gerstner波，顶点间距小于1/2波长。水面自身颜色，反射颜色，菲尼尔控制透明度，浅水区透明，深水区不透。
 
@@ -376,19 +328,15 @@
 
 《Gpu Gems2》Using Vertex Texture Displacement for Realistic Water Rendering：当时FFT还不敢想，所以文中根据采样贴图实现顶点偏移，但是基于法线贴图计算光照，用法线贴图当做高度图。分支优化，泡沫渲染，波浪背面处理
 
-《Gpu Pro2》[Mobile] Shader-Based Water Effects：移动平台上ES2.0下实现水效果，平面反射，折射，Bump扰动，Fresnel，Fog。
+《Gpu Pro2》\[Mobile] Shader-Based Water Effects：移动平台上ES2.0下实现水效果，平面反射，折射，Bump扰动，Fresnel，Fog。
 
 《Gpu Pro3》Volumetric Real-Time Water and Foam Rendering：类似流体，粒子模拟，带物理。模拟水面泡沫效果，瀑布激水，水花等。需要前后深度，模拟体效果。
 
- 
-
-#### Decal
+## Decal
 
 《Gpu Pro2》Volume Decals：延迟贴花实现，延迟下性价比超高，没有前向下的各种性能问题以及Z Fighitng问题。
 
- 
-
-#### Image（Post） Processing：
+## Image（Post） Processing：
 
 《Gpu Gems1》Real-Time Glow：最基本的Glow效果，提取高亮，横向纵向分离卷积叠加回原图。此外为了防止抖动，调高了远处的雾效，还有结合上一帧形成拖影效果。
 
@@ -398,7 +346,7 @@
 
 《Gpu Gems1》A Framework for Image Processing：一套后处理流程搭建，支持多个后处理效果。
 
-《Gpu Gems2》Using Lookup Tables to Accelerate Color Transformations：简单介绍了一下LUT，但是常规LUT满足不了输入输出，引入了三维LUT，分辨率32*32*32，不能过大，实现对某些操作预计算，某些操作可以提高100倍的效率。
+《Gpu Gems2》Using Lookup Tables to Accelerate Color Transformations：简单介绍了一下LUT，但是常规LUT满足不了输入输出，引入了三维LUT，分辨率32_32_32，不能过大，实现对某些操作预计算，某些操作可以提高100倍的效率。
 
 《Gpu Gems2》Advanced High-Quality Filtering：GPU实现模糊，重建，锐化（Shock Filtering），抗锯齿等滤镜。
 
@@ -412,15 +360,13 @@
 
 《Gpu Pro1》Parallelized Implementation of Universal Visual Computer：将滤波处理Halftone，Edge Detect等从CPU转移到GPU上。
 
-《Gpu Pro2》[Mobile]Post-Processing Effects on Mobile Devices：移动平台若干后处理实现，Bloom，Blur，Dof。
+《Gpu Pro2》\[Mobile]Post-Processing Effects on Mobile Devices：移动平台若干后处理实现，Bloom，Blur，Dof。
 
 《Gpu Pro4》Coherence-Enhancing Filtering on the GPU：一系列Filter实现平滑实现Flow-Guided Sommth，实现很好的平滑效果，有点风格化油画的效果。
 
 《Gpu Zen》High Quality GPU-efficient Image Detail Manipulation：细节处理滤镜，增加或者移除细节，通过GL Compute Shader实现。
 
- 
-
-#### Dof
+## Dof
 
 《Gpu Gems1》 Depth of Field: A Survey of Techniques：首先介绍了景深的原理，以及列举了若干景深的方法，光线追踪，累积Buffer，分层绘制，基于深度混合的。最后重点介绍了一些基于深度混合CoC的方法，多级mip混合，双线性插值。
 
@@ -436,9 +382,9 @@
 
 《Gpu Zen》Practical Gather-based Bokeh Depth of Field：1.5ms 1080p GTX660，COC模糊，光圈边界模糊效果，1/4分辨率计算，最后特殊Upsample。
 
-####  
+####
 
-#### AA
+## AA
 
 《Gpu Gems2》High-Quality Antialiased Rasterization：一种将屏幕分块SSAA，然后拼合的技术。屏幕分Tile，调整投影矩阵渲染到超大分辨率上，然后降采样。用于离线渲染超清晰图像。
 
@@ -450,7 +396,7 @@
 
 《Gpu Pro3》 Geometric Antialiasing Methods：给出了两种基于Geomerty的AA方法。GPAA，需要将所有物体的边缘再渲染一次到RT上，然后在Blend回去。GBAA是其优化，渲染时额外生成一个Geomerty Buffer存储边缘信息，MRT，节省DC。
 
-《Gpu Pro3》[Mobile] Inexpensive Antialiasing of Simple Objects：用于移动平台的一种简单AA方式，简单来说就是在画一遍更加平滑的边盖住原始的锯齿。
+《Gpu Pro3》\[Mobile] Inexpensive Antialiasing of Simple Objects：用于移动平台的一种简单AA方式，简单来说就是在画一遍更加平滑的边盖住原始的锯齿。
 
 《Gpu Pro3》Implementing a Directionally Adaptive Edge AA Filter using DirectX 11：DX10，11上实现一种更好的Box antialiasing filter，基于后处理的。主要是计算更加精确的倾斜边界线来表示边缘，非常数学...没有看懂。
 
@@ -462,9 +408,7 @@
 
 《Gpu Zen》Programmable Per-pixel Sample Placement with Conservative Rasterizer：利用保守光栅化的特性，通过Geomerty Shader调整采样位置，使Aliasing变成高频噪声，进而可以被滤波去掉，并介绍了怎样整合到Foveated Rendering系统。
 
- 
-
-#### Ray Tracing
+## Ray Tracing
 
 《Gpu Pro1》Real-Time Multi-Bounce Ray-Tracing with Geometry Impostors：实时光追，除了Heightmap精确表示物体的形状信息外，还要有粗略的物体光线检测，另外需要保证动静分离，降低每帧更新对象数量，cubemap sistance Impostors。
 
@@ -478,13 +422,11 @@
 
 《Gpu Pro6》Rendering Vector Displacement-Mapped Surfaces in a GPU Ray Tracer：OpenCL Ray Tracing实现Displacement Map。
 
-《Gpu Pro6》[Mobile] Hybrid Ray Tracing on a PowerVR GPU：使用专门的OpenRL库，通过G-Buffer的中间信息进行计算，结合光栅化实现光线追踪渲染效果，方便实现软阴影，反射，折射等在直接光栅化中比较复杂的效果。
+《Gpu Pro6》\[Mobile] Hybrid Ray Tracing on a PowerVR GPU：使用专门的OpenRL库，通过G-Buffer的中间信息进行计算，结合光栅化实现光线追踪渲染效果，方便实现软阴影，反射，折射等在直接光栅化中比较复杂的效果。
 
 《Gpu Pro7》 Semi-static Load Balancing for Low-Latency Ray Tracing on Heterogeneous Multiple GPUs：GPU 光线追踪，针对不同GPU如果有不同的运算能力，进行合理分配以最大化效率，同样的思想也可以用于CPU。
 
- 
-
-#### Occlusion Culling & GPU Pipeline
+## Occlusion Culling & GPU Pipeline
 
 《Gpu Gems1》Efficient Occlusion Culling：虽然不算GPU Pipeline，但是至少算是开始往这方面研究的始祖之一了。通过渲染物体之前先绘制简单包围盒判断可以光栅化像素数量判断是否可以提出，与Early-Z是两个概念，可以更进一步提出，发生在真正渲染的流水线之前。
 
@@ -506,31 +448,25 @@
 
 《Gpu Zen》Optimizing the Graphics Pipeline with Compute：在AMD上通过Compute Shader实现各种Culling（Cluster，Small Primitive，Backface，Frustum，Depth），Tesselation，以及AMD GCN架构下的某些特性优化。
 
- 
-
-#### Special Effect
+## Special Effect
 
 《Gpu Gems1》Simulating Diffraction：衍射的模拟，光盘等各向异性的效果模拟，tangent方向计算各向异性，额外附加彩虹贴图模拟色散。
 
-《Gpu Pro2》[Mobile] A Shader-Based eBook Renderer：在GLES2.0上实现电子书的翻页动画效果，并给出了ES1.1上fallback。
+《Gpu Pro2》\[Mobile] A Shader-Based eBook Renderer：在GLES2.0上实现电子书的翻页动画效果，并给出了ES1.1上fallback。
 
 《Gpu Pro4》A Pipeline for Authored Structural Damage：制作角色部分破坏效果，比较了几种常见做法，分块做模型，SkinMesh做动画，Alpha Test等方法，而最后给出了使用顶点色作为标识，直接在Vertex Shader阶段实现剔除的方案，性能和效果都比较好。
 
- 
-
-#### Particle
+## Particle
 
 《Gpu Gems1》 Fire in the "Vulcan" Demo：火焰粒子效果，排序的Alpha Blend Billboard贴片，降低Fillrate先把其渲染到低分辨率的RT再叠加回来，遮挡关系通过渲染低模到RT上实现。
 
 《Gpu Gems3》High-Speed, Off-Screen Particles：与上一篇思想类似都是为了降低大量overdraw消耗，先把粒子渲染到低分辨率RT再叠加回来，但是处理得更加全面，结合硬件新特性。离屏的Buffer不需要再渲染低模，而是直接使用主buffer的深度进行down sample的结果，需要DX10支持；软粒子相关；手动Blend，混合时upsample效果不好，需要进行边缘检测优化。
 
-《Gpu Pro6》[Mobile]Implementing a GPU-Only Particle-Collision System with ASTC 3D Textures and OpenGL ES 3.0：使用GLES3.0的新特性，Transform Feedback在vertex中模拟粒子然后写回vertex buffer再渲染，并且使用Instancing降低大规模粒子的消耗。
+《Gpu Pro6》\[Mobile]Implementing a GPU-Only Particle-Collision System with ASTC 3D Textures and OpenGL ES 3.0：使用GLES3.0的新特性，Transform Feedback在vertex中模拟粒子然后写回vertex buffer再渲染，并且使用Instancing降低大规模粒子的消耗。
 
 《Gpu Pro7》Interactive Cinematic Particles：使用DCC Tools离线生成粒子，然后压缩，最后再使用引擎实时渲染，可以模拟更加真实的粒子。
 
- 
-
-#### Optimizing
+## Optimizing
 
 《Gpu Gems1》Graphics Pipeline Performance：流水线各个阶段的优化技巧，CPU提交，合批，Shader分支，采样，Vertex，Fragment都有介绍
 
@@ -542,21 +478,17 @@
 
 《Gpu Pro3》Z^3 Culling：为了防止Alpha Test或者Discard等导致Early-Z失效，文中给了一种自己采样深度的实现culling的操作，也可以实现overdraw的优化。
 
-《Gpu Pro5》[Mobile] Bandwidth Efficient Graphics with ARM® Mali™ GPUs：Shader Framebuffer Fetch Extensions，Shader Pixel Local Storage，使用扩展可以直接读写当前缓存，而非整个frame buffer，直接读取深度，极大降低带宽消耗。
+《Gpu Pro5》\[Mobile] Bandwidth Efficient Graphics with ARM® Mali™ GPUs：Shader Framebuffer Fetch Extensions，Shader Pixel Local Storage，使用扩展可以直接读写当前缓存，而非整个frame buffer，直接读取深度，极大降低带宽消耗。
 
 《Gpu Pro7》Progressive Rendering Using Multi-frame Sampling：正常渲染比较费，那么就把渲染分摊到多帧，使用一个积累的结果，该思想可用于AA，DOF，SSAO，OIT。
 
- 
-
-#### Instancing & Batching
+## Instancing & Batching
 
 《Gpu Gems2》Inside Geometry Instancing：通过Geomerty Batch的方式实现尽可能降低批次的渲染，四种方式，静态合批，动态合批，Vertex Constants Instancing（固定内容不变，每帧写顶点数据控制变化），Instancing API（DX9已经给了类似Instancing的API，不过似乎和现有Instancing有些区别），各有优缺点。
 
 《Gpu Gems2》Segment Buffering：还是英规场景中重复物体，将靠近的物体合并成一个大的实例，降低渲染批次。
 
- 
-
-#### Crowds
+## Crowds
 
 《Gpu Gems3》Animated Crowd Rendering：DX10直接支持更好的Instancing，直接通过Instancing大量绘制对象。然后使用纹理存储动画，vertex阶段读取，实现大规模Instancing动画。LOD。
 
@@ -566,7 +498,7 @@
 
 《Gpu Zen》Real Time Markov Decision Processes for Crowd Simulation：主要关注的是马尔科夫决策，模拟行为，顺带包含了一些超大规模人物角色渲染的内容，GPU剔除等。
 
-#### Animation & Morph
+## Animation & Morph
 
 《Gpu Gems1》Animation in the "Dawn" Demo：Dawn中的动画模拟，第一种是Morph，多套网格之间插值计算模拟细腻的动画，还有蒙皮骨骼动画。
 
@@ -574,15 +506,11 @@
 
 《Gpu Gems3》DirectX 10 Blend Shapes: Breaking the Limits：DX10下使用更强的顶点流输出（Transform Feedback？）实现Morph结果输出，再迭代处理，无需一次融合所有Morph，打破了可以Morph的数量限制，实现任意多Morph融合。
 
-《Gpu Pro5》[Mobile] Efficient Morph Target Animation Using OpenGL ES 3.0：通过Transform-feedback技术，在正常渲染之前通过一个prepass处理morph，实现Morph动画效果。
+《Gpu Pro5》\[Mobile] Efficient Morph Target Animation Using OpenGL ES 3.0：通过Transform-feedback技术，在正常渲染之前通过一个prepass处理morph，实现Morph动画效果。
 
- 
-
-#### Texture Animation
+## Texture Animation
 
 《Gpu Pro2》 Practical and Realistic Facial Wrinkles Animation：使用法线贴图，Mask图等实现人物的皱纹动画效果。
-
- 
 
 #### Bump & Parallex Mapping & Displacement Maping & Relief Mapping
 
@@ -598,9 +526,7 @@
 
 《Gpu Pro1》Quadtree Displacement Mapping with Height Blending：常规法线贴图以及视差贴图都有较大的限制，视角，自阴影，AO等问题，通过Ray-Tracing的原理实现的Displacement可以满足上述条件，可以任意高度扩展网格，文中还给出了预计算存储在Mip中的Quadtree加速Tracing优化的方案。
 
- 
-
-#### Texture Format & Compression
+## Texture Format & Compression
 
 《Gpu Gems1》The OpenEXR Image File Format：主要是HDR格式的贴图，LDR保存不了高亮信息会被Clip掉。半精度。给出格式结构，使用等。
 
@@ -610,19 +536,15 @@
 
 《Gpu Pro4》Real-Time JPEG Compression Using DirectCompute：实时GPU实现JPEG图片压缩，使用Direct Comulte，使实时压缩成为可能，可以为视频等进行压缩。
 
-《Gpu Pro5》[Mobile] Adaptive Scalable Texture Compression：ASTC压缩格式，Channel Weight，Block Weight可以单独设置，可以以一个选定的比特率来压缩常见的任意贴图格式的贴图，甚至3D贴图。
+《Gpu Pro5》\[Mobile] Adaptive Scalable Texture Compression：ASTC压缩格式，Channel Weight，Block Weight可以单独设置，可以以一个选定的比特率来压缩常见的任意贴图格式的贴图，甚至3D贴图。
 
 《Gpu Pro5》 Reducing Texture Memory Usage by 2-Channel Color Encoding ：两通道表示颜色，特殊色彩空间压缩颜色贴图
 
-《Gpu Pro7》Real-Time BC6H Compression on GPU：BC6H方式纹理压缩，主要是针对HDR格式的贴图，一般用于CubeMap的压缩，该方法可以用于实时压缩，基于GPU，256*256*6全套mipmap chain的0.07ms。
+《Gpu Pro7》Real-Time BC6H Compression on GPU：BC6H方式纹理压缩，主要是针对HDR格式的贴图，一般用于CubeMap的压缩，该方法可以用于实时压缩，基于GPU，256_256_6全套mipmap chain的0.07ms。
 
- 
+## HDR
 
-#### HDR
-
-《Gpu Pro6》[Mobile] High Dynamic Range Computational Photography on Mobile GPUs：结合OpenGL和OpenCL实现了一套通过GPU处理照片曝光问题的流程，通过多曝光系数的照片结合+Tone-Mapping生成最终图片。
-
- 
+《Gpu Pro6》\[Mobile] High Dynamic Range Computational Photography on Mobile GPUs：结合OpenGL和OpenCL实现了一套通过GPU处理照片曝光问题的流程，通过多曝光系数的照片结合+Tone-Mapping生成最终图片。
 
 #### Texture Filter & Sample & Mipmap
 
@@ -638,7 +560,7 @@
 
 《Gpu Pro3》Practical Elliptical Texture Filtering on the GPU：给出了一种不使用硬件Binlnear等Filter，而是在GPU实现，可以获得更高的AnsiLevel等的Texture Filter方法。
 
-#### Procedural Texture
+## Procedural Texture
 
 《Gpu Gems1》 Implementing Improved Perlin Noise：柏林噪声，程序噪声，根据各种输入值生成的程序噪声可以脱离于分辨率，超近细节可以有较好的噪声效果，不过高频不能高于采样率，对效果无意义，而且可能在使用纹理动画时出现斑点。这类噪声已经很早就应用于电影等工业。
 
@@ -652,9 +574,7 @@
 
 《Gpu Pro7》Adaptive Virtual Textures：Procedural Virtual Texture的改良版本，支持超大分辨率，根据距离自动选择Mipmap，结合延迟渲染+Deferred Decal可以实现开放世界超大地形超高分辨率的渲染。
 
- 
-
-#### Tessellation & Geometry
+## Tessellation & Geometry
 
 《Gpu Gems1》Adaptive Tessellation of Subdivision Surfaces with Displacement Mapping：结合广度优先的递归细分，实现曲面细分效果。并且结合了Displacement Mapping.
 
@@ -680,9 +600,7 @@
 
 《Gpu Zen》Attributed Vertex Clouds：程序化生成网格，使用Instacing渲染，通过per instance data实现区分，如顶点采样attribute贴图，通过Geomerty生成具体形状，Tessellation进一步润色。
 
- 
-
-#### Terrain
+## Terrain
 
 《Gpu Gems2》Terrain Rendering Using GPU-Based Geometry Clipmaps：通过顶点纹理实现基于GPU的几何体裁剪，尽可能将计算转移到GPU，降低地形CPU的消耗。
 
@@ -698,11 +616,9 @@
 
 《Gpu Pro6》Dynamic GPU Terrain：在GPU计算生成网格，使近处网格密集，远处LOD，但是对于物理碰撞，需要再从GPU将数据同步回CPU。
 
-#### Procedural Content Generation
+## Procedural Content Generation
 
 《Gpu Pro2》Procedural Content Generation on the GPU：程序生成地形，高度，树密度图，通过随机生成场景。
-
- 
 
 #### Engine Design
 
@@ -726,19 +642,17 @@
 
 《Gpu Pro5》Managing Transformations in Hierarchy：实现一套灵活的层级的TRS系统，方便解算物体的具体世界空间Transform，Parent，以及切换父节点时Transform重新映射。
 
-《Gpu Pro6》Semantic-Based Shader Generation Using Shader Shaker：处理Shader管理，变体等问题。首先对比了现有的Shader管理方式，如函数调用复用代码，Uber-Shader一个超级复杂Shader搞定一切，封装好函数通过Graph编辑（UE4），Template-based方式封装大部分功能，根据需要自行扩展接口（Unity的surface）。文中给出了一种指定输入块和输出块的Shader编写方法，然后根据A*搜索按照寻路的方式链接Shader的Shader管理方式，实现复杂Shader管理以及跨平台编译。
+《Gpu Pro6》Semantic-Based Shader Generation Using Shader Shaker：处理Shader管理，变体等问题。首先对比了现有的Shader管理方式，如函数调用复用代码，Uber-Shader一个超级复杂Shader搞定一切，封装好函数通过Graph编辑（UE4），Template-based方式封装大部分功能，根据需要自行扩展接口（Unity的surface）。文中给出了一种指定输入块和输出块的Shader编写方法，然后根据A\*搜索按照寻路的方式链接Shader的Shader管理方式，实现复杂Shader管理以及跨平台编译。
 
- 
-
-#### Cross Platform&Graphic API
+## Cross Platform\&Graphic API
 
 《Gpu Gems1》An Introduction to Shader Interfaces：CG语言的一个功能，类似C#中泛型接口，比如可以多态实现各类光照效果，而无需#if def等，此外还有可变长数组。
 
 《Gpu Gems2》GPU Image Processing in Apple's Motion：在Apple上实现图像处理相关，感觉主要是吐槽ATI各种坑。
 
-《Gpu Pro1》[Mobile] Migration to OpenGL ES 2.0：主要介绍了一下GLES2.0相关的内容，毕竟刚开始在移动上用ES2.0。
+《Gpu Pro1》\[Mobile] Migration to OpenGL ES 2.0：主要介绍了一下GLES2.0相关的内容，毕竟刚开始在移动上用ES2.0。
 
-《Gpu Pro1》[Moblie]iPhone 3GS Graphics Development and Optimization Strategies：Iphoe3GS，PowerVR显卡移动平台GLES2.0相关内容，给出了若干移动平台的优化，以及PVRTC压缩相关内容。
+《Gpu Pro1》\[Moblie]iPhone 3GS Graphics Development and Optimization Strategies：Iphoe3GS，PowerVR显卡移动平台GLES2.0相关内容，给出了若干移动平台的优化，以及PVRTC压缩相关内容。
 
 《Gpu Pro1》Porting Code between Direct3D9 and OpenGL 2.0：对比了DX和GL在Shader，Buffer，Texture，FrameBuffer，API等不同。
 
@@ -748,9 +662,7 @@
 
 《Gpu Zen》Profiling and Optimizing WebGL Applications Using Google Chrome：Web GL下的优化，其实更偏重的是介绍WebGL相关内容，工具，非通用优化。
 
- 
-
-#### Pipeline & GPU Architecture & Algorithm
+## Pipeline & GPU Architecture & Algorithm
 
 《Gpu Gems2》Streaming Architectures and Technology Trends：GPU的流式体系结构，高性能计算等。
 
@@ -760,17 +672,13 @@
 
 《Gpu Gems2》Conservative Rasterization：介绍了两种保守光栅化的算法，这个东西在GPU遮挡剔除等很有用，DX12已经直接内置。
 
- 
-
-#### Quaternion
+## Quaternion
 
 《Gpu Pro3》Quaternion-Based Rendering Pipeline：对比四元数和矩阵相关内容，包括TBN的实现等，基于四元数的管线。
 
 《Gpu Pro5》Quaternions Revisited：使用四元数代替引擎中的3x3旋转矩阵，实现法线贴图TBN矩阵转换，基本坐标变换，Instancing，skining，morph等效果，降低带宽和存储消耗
 
- 
-
-#### GPU Compute
+## GPU Compute
 
 《Gpu Gems1》A Toolkit for Computation on GPUs：开始用GPU搞事情了，用GPU实现映射，约减，排序，搜索。
 
@@ -814,15 +722,13 @@
 
 《Gpu Pro2》A Fast Poisson Solver for OpenCL using Multigrid Methods：计算泊松结算，可以用于流体等。
 
-《Gpu Pro5》[Mobile] Optimizing OpenCL Kernels for the ARM® Mali™-T600 GPUs：对 ARM® Mali™-T600 GPUs设计OpenCL的优化。
+《Gpu Pro5》\[Mobile] Optimizing OpenCL Kernels for the ARM® Mali™-T600 GPUs：对 ARM® Mali™-T600 GPUs设计OpenCL的优化。
 
 《Gpu Pro5》Two-Level Constraint Solver and Pipelined Local Batching for Rigid Body Simulation on GPUs：物理模拟，GPU实现约束解算
 
 《Gpu Pro5》 Non-separable 2D, 3D, and 4D Filtering with CUDA：使用CUDA医学影像方面的一些滤波处理。
 
- 
-
-#### Fluids & Liquids & Metaball
+## Fluids & Liquids & Metaball
 
 《Gpu Gems1》Fast Fluid Dynamics Simulation on the GPU：介绍了GPU上模拟流体相关的一些数学知识等，使用GPU可以模拟一些复杂的运算效果。
 
@@ -840,9 +746,7 @@
 
 《Gpu Pro7》Interactive Sparse Eulerian Fluid：DX11下模拟烟雾性质（喷气）的流体效果
 
- 
-
-#### Physics
+## Physics
 
 《Gpu Gems3》Real-Time Rigid Body Simulation on GPUs：实时GPU上的刚体仿真效果。借助GPU的计算实现大规模的模拟，并且可以适用于其他类型，如液体。
 
@@ -856,9 +760,7 @@
 
 《Gpu Pro7》 A 3D Visualization Tool Used for Test Automation in the Forza Series：基于Mesh的物理需要依赖网格本身，但是如果模型制作时不规范，有洞或者法线错误会导致物理引擎出错，所以文中给出了一种检测工具。
 
- 
-
-#### Stereogram & VR
+## Stereogram & VR
 
 《Gpu Gems1》Real-Time Stereograms：实时绘制立体效果，那种对眼看能出现立体的？表示这辈子可能都不会研究到这个吧。
 
@@ -866,9 +768,7 @@
 
 《Gpu Zen》Understanding, Measuring, and Analyzing VR Graphics Performance：介绍VR相关内容，VSync，增加GPU Trace对VR性能进行优化。
 
- 
-
-#### Others
+## Others
 
 《Gpu Gems2》Computer Vision on the GPU：计算机视觉，边缘检测，特征向量，全景图等。
 
@@ -876,9 +776,9 @@
 
 《Gpu Gems3》Object Detection by Color: Using the GPU for Real-Time Video Image Processing：实时图像处理跟踪，Core Image图像处理框架，实现视频中追踪关键对象替换等。
 
-《Gpu Pro1》[Mobile]Touchscreen-Based User Interaction：触屏用户交互方案，计算触摸输入相关。
+《Gpu Pro1》\[Mobile]Touchscreen-Based User Interaction：触屏用户交互方案，计算触摸输入相关。
 
-《Gpu Pro1》[Mobile]Optimizing a 3D UI Engine for Mobile Devices：在移动平台实现3D UI相关功能。
+《Gpu Pro1》\[Mobile]Optimizing a 3D UI Engine for Mobile Devices：在移动平台实现3D UI相关功能。
 
 《Gpu Pro3》A WebGL Globe Rendering Pipeline：Web GL(基于GLES2.0)实现地球绘制
 
