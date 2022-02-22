@@ -2,7 +2,7 @@
 
 ## 😁 MATH
 
-* [Runge Kutta草稿](MATH/README.md)
+* [Runge Kutta草稿](MATH/Runge-Kutta草稿.md)
 
 ## 😉 C++及Windows
 
@@ -12,4 +12,4 @@
 
 ## CG
 
-* [《Gpu Gems》《Gpu Pro》《Gpu Zen》分类整理](CG/《GpuGems》《GpuPro》《GpuZen》分类整理.md)
+* [《Gpu Gems》《Gpu Pro》《Gpu Zen》分类整理](CG/《Gpu-Gems》《Gpu-Pro》《Gpu-Zen》分类整理.md)
