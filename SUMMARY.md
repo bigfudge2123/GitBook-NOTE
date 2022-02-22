@@ -6,9 +6,9 @@
 
 ## 😉 C++及Windows
 
-* [两个头文件互相包含的问题](c++-ji-windows/liang-ge-tou-wen-jian-hu-xiang-bao-han-de-wen-ti.md>)
-* [C++之Lambda表达式](c++-ji-windows/c++-zhi-lambda-biao-da-shi.md)
-* [虚拟内存](c++-ji-windows/虚拟内存.md)
+* [两个头文件互相包含的问题](c++及windows/两个头文件互相包含的问题.md>)
+* [C++之Lambda表达式](c++及windows/C++之Lambda表达式.md)
+* [虚拟内存](c++及windows/虚拟内存.md)
 ## CG
 
 * [《Gpu Gems》《Gpu Pro》《Gpu Zen》分类整理](CG/《Gpu Gems》《Gpu Pro》《Gpu Zen》分类整理.md)
