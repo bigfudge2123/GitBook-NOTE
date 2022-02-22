@@ -4,7 +4,9 @@
 
 ### 1. VTK可视化技术 <a href="#1.-vtk-ke-shi-hua-ji-shu" id="1.-vtk-ke-shi-hua-ji-shu"></a>
 
-![](https://g.csdnimg.cn/static/logo/favicon32.ico)VTK 可视化技术-基础算法2\_清韵逐梦的博客-CSDN博客\_vtk粒子系统
+{% embed url="https://blog.csdn.net/weixin_40798471/article/details/102814634" %}
+animation
+{% endembed %}
 
 ## 2. 基本概念
 
