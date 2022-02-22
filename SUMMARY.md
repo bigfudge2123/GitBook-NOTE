@@ -8,7 +8,7 @@
 
 * [两个头文件互相包含的问题](c++-ji-windows/liang-ge-tou-wen-jian-hu-xiang-bao-han-de-wen-ti.md>)
 * [C++之Lambda表达式](c++-ji-windows/c++-zhi-lambda-biao-da-shi.md)
-* [虚拟内存](c++-ji-windows/xu-ni-nei-cun.md)
+* [虚拟内存](c++-ji-windows/c++-zhi-lambda-biao-da-shi.md)
 ## CG
 
-* [《Gpu Gems》《Gpu Pro》《Gpu Zen》分类整理](<《Gpu Gems》《Gpu Pro》《Gpu Zen》分类整理.md>)
+* [《Gpu Gems》《Gpu Pro》《Gpu Zen》分类整理](CG/《Gpu Gems》《Gpu Pro》《Gpu Zen》分类整理.md)
