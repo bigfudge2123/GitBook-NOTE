@@ -12,4 +12,4 @@
 
 ## CG
 
-* [《Gpu Gems》《Gpu Pro》《Gpu Zen》分类整理](CG/Gpu Gems Gpu Pro Gpu Zen分类整理.md)
+* [《Gpu Gems》《Gpu Pro》《Gpu Zen》分类整理](CG/《Gpu Gems》《Gpu Pro》《Gpu Zen》分类整理.md)
