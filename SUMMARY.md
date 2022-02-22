@@ -14,7 +14,7 @@
 
 ## 🥳 CG <a href="#CG" id="CG"></a>
 
-* [\[《Gpu Gems》《Gpu Pro》《Gpu Zen》分类整理\](CG/cg book.md)](CG/cg-books.md)
+* [\[《Gpu Gems》《Gpu Pro》《Gpu Zen》分类整理\](CG/cg book.md)](CG/cg books.md)
 
 ## 😏 Visualization <a href="#Visulazation" id="Visulazation"></a>
 
