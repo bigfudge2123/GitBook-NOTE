@@ -20,3 +20,4 @@
 
 * [流线组件实现](<Visulazation/streamline components.md>)
 * [各向异性信息熵算法](Visulazation/anisotropy-entropy.md)
+* [ParaView计算流线](visulazation/paraview-ji-suan-liu-xian.md)
