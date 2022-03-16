@@ -23,6 +23,6 @@
 * [ParaView计算流线](<visulazation/paraview-calculate streamline.md>)
 * [MVI代码查看](visulazation/mvi.md)
 
-## 随手记 <a href="#shorthand" id="shorthand"></a>
+## 随手记 <a href="#Shorthand" id="Shorthand"></a>
 
-* [流场特征提取综述](shorthand/liu-chang-te-zheng-ti-qu-zong-shu.md)
+* [流场特征提取综述](Shorthand/summary.md)
