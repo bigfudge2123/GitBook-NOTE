@@ -14,6 +14,7 @@
 
 ## 🥳 CG
 
+* [Volume Rendering](cg/volume-rendering.md)
 * [《Gpu Gems》《Gpu Pro》《Gpu Zen》分类整理](<CG/cg books.md>)
 
 ## 😏 Visualization <a href="#visulazation" id="visulazation"></a>
